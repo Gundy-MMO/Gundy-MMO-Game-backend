@@ -92,7 +92,7 @@ exports.getRoomMessage = async (req,res) => {
     try {
 
             const _getMessages = await roomChat.find(
-                {sender: req.user.userId ,room: req.params.room}
+                {room: req.params.room}
             );
       
             res.send({ status: "OK", message: "Message Found", messages: _getMessages})
