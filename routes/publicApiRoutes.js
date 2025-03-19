@@ -38,7 +38,7 @@ publicApiRoutes.post("/send/message", auth,  sendMessage);
 publicApiRoutes.get("/get/messages/:chatId", auth,  getMessage);
 publicApiRoutes.get("/get/chats", auth,  getUserChats);
 
-publicApiRoutes.post("/send/room/message", auth,  sendRoomMessage);
+publicApiRoutes.post("/send/room/message",  sendRoomMessage);
 publicApiRoutes.get("/get/room/messages/:room", auth,  getRoomMessage);
 
  
