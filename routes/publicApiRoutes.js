@@ -41,7 +41,7 @@ publicApiRoutes.get("/get/chats", auth,  getUserChats);
 publicApiRoutes.post("/send/room/message",auth , sendRoomMessage);
 publicApiRoutes.get("/get/room/messages/:room",  getRoomMessage);
 
-publicApiRoutes.get("/get/agora/token",  getAgoraVoiceToken);
+publicApiRoutes.get("/get/agora/token",auth,  getAgoraVoiceToken);
 
 
  

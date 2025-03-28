@@ -118,8 +118,8 @@ exports.getAgoraVoiceToken = (req,res) => {
     return res.status(400).json({ error: 'Channel name is required' });
   }
 
-//   const uid = req.user.userId;
-  const uid = req.query.userId;
+  const uid = req.user.userId;
+//   const uid = req.query.userId;
   const role = RtcRole.PUBLISHER;
 
   const expirationTimeInSeconds = 24*3600; // 1 hour token expiration
