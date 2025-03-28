@@ -1,6 +1,11 @@
 const { default: axios } = require("axios");
 const jwt = require('jsonwebtoken');
- 
+const { RtcTokenBuilder, RtcRole } = require('agora-access-token');
+
+const APP_ID = process.env.AGORA_APP_ID;
+const APP_CERTIFICATE = process.env.AGORA_APP_CERTIFICATE;
+
+
 
 const formidable = require('formidable')
 const AWS = require('aws-sdk');
@@ -106,7 +111,38 @@ exports.getRoomMessage = async (req,res) => {
 
     }
 }
+exports.getAgoraVoiceToken = (req,res) => {
+    try{
+        const channelName = req.query.channel;
+  if (!channelName) {
+    return res.status(400).json({ error: 'Channel name is required' });
+  }
 
+//   const uid = req.user.userId;
+  const uid = req.query.userId;
+  const role = RtcRole.PUBLISHER;
+
+  const expirationTimeInSeconds = 24*3600; // 1 hour token expiration
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+
+  const token = RtcTokenBuilder.buildTokenWithUid(
+    APP_ID,
+    APP_CERTIFICATE,
+    channelName,
+    uid,
+    role,
+    privilegeExpiredTs
+  );
+
+  res.json({  status: true , token  });
+    }
+    catch(e){
+        console.log(e);
+  res.json({ status: false });
+
+    }
+}
 exports.getMessage = async (req,res) => {
     try {
 

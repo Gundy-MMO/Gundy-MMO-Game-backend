@@ -3,7 +3,7 @@ const auth= require("../middleware/auth")
 
 const { createUser, getAllUsers, getUserById, updateUser, getUserByaddress, getSingleUser, acceptFriendRequest, sendFriendRequest, rejectFriendRequest, unfriend, friends,pendingFriendRequest } = require("../controllers/userController");
 const { getBanner, addBanner } = require("../controllers/adController");
-const { sendMessage, getMessage, getRoomMessage, sendRoomMessage, getUserChats } = require("../controllers/chatController");
+const { sendMessage, getMessage, getRoomMessage, sendRoomMessage, getUserChats, getAgoraVoiceToken } = require("../controllers/chatController");
  
 
 const publicApiRoutes = express.Router();
@@ -40,6 +40,9 @@ publicApiRoutes.get("/get/chats", auth,  getUserChats);
 
 publicApiRoutes.post("/send/room/message",auth , sendRoomMessage);
 publicApiRoutes.get("/get/room/messages/:room",  getRoomMessage);
+
+publicApiRoutes.get("/get/agora/token",  getAgoraVoiceToken);
+
 
  
 
