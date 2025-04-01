@@ -39,7 +39,8 @@
     "ntp-client": "^0.5.3",
     "oauth": "^0.10.0",
     "oauth-signature": "^1.5.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-verify": "^2.0.11",
