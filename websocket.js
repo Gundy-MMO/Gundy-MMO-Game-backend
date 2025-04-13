@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
   console.log("User connected:", userId);
   io.emit("playersUpdate", players);
 
-  players[userId] = { x: 650, y: 400, angle: 6 , room: "landing" };
+  players[userId] = { x: 650, y: 400, angle: 6 , room: "landing" , quickChat: "" };
 
   socket.on("move", (pos) => {
     players[userId] = pos;

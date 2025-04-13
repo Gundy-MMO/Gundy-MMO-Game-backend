@@ -4,12 +4,12 @@ const express = require('express');
 const cors = require('cors');
 const connectDatabase = require('./utils/dbConnection'); 
 const publicApiRoutes = require('./routes/publicApiRoutes');
+const { streamChatRequest, chatRequest } = require('./controllers/airtokcontroller.js');
  
 
  
 connectDatabase();
  
-
 const app = express ();
 app.use(cors({
     origin: "*", // Replace with your allowed origins

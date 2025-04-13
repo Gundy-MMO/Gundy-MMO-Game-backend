@@ -4,6 +4,7 @@ const auth= require("../middleware/auth")
 const { createUser, getAllUsers, getUserById, updateUser, getUserByaddress, getSingleUser, acceptFriendRequest, sendFriendRequest, rejectFriendRequest, unfriend, friends,pendingFriendRequest } = require("../controllers/userController");
 const { getBanner, addBanner } = require("../controllers/adController");
 const { sendMessage, getMessage, getRoomMessage, sendRoomMessage, getUserChats, getAgoraVoiceToken } = require("../controllers/chatController");
+const { getAirTokMessage, sendAirTokMessage } = require("../controllers/airtokcontroller");
  
 
 const publicApiRoutes = express.Router();
@@ -41,6 +42,13 @@ publicApiRoutes.get("/get/chats", auth,  getUserChats);
 publicApiRoutes.post("/send/room/message",auth , sendRoomMessage);
 publicApiRoutes.get("/get/room/messages/:room",  getRoomMessage);
 
+// Airtok
+publicApiRoutes.get("/get/airtok/messages", auth, getAirTokMessage);
+publicApiRoutes.post("/send/airtok/message", auth,  sendAirTokMessage);
+
+
+
+// Voice Chat
 publicApiRoutes.get("/get/agora/token",auth,  getAgoraVoiceToken);
 
 

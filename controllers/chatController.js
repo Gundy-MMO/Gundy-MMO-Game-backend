@@ -16,6 +16,7 @@ const { ObjectId } = require("mongodb");
 const user = require("../models/user");
 const chat = require("../models/chat"); 
 const roomChat = require("../models/roomChat");
+const airTokChat = require("../models/airTokChat");
  
  
 
@@ -92,6 +93,11 @@ exports.sendRoomMessage = async (req, res) => {
 
     }
 }
+
+
+
+
+
 
 exports.getRoomMessage = async (req,res) => {
     try {
